@@ -1,0 +1,61 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Compile and Clean') { 
+            steps {
+
+                sh "mvn clean compile"
+            }
+        }
+
+        stage('deploy') { 
+            steps {
+                sh "mvn package"
+            }
+        }
+
+        stage('Build Docker image'){
+            steps {
+                sh 'docker stop brand'
+                sh 'docker rm brand'
+                sh 'docker rmi brand-app'
+                sh 'docker build -f Dockerfile -t samplepipeline .'
+            }
+        }
+        
+        stage('Docker deploy'){
+            steps {
+                sh 'docker run -itd -p 8081:8080 --name samplepip samplepipeline'
+            }
+        }
+
+        
+        stage('Archving') { 
+            steps {
+                 archiveArtifacts '**/target/*.jar'
+            }
+        }
+    }
+}
+
+f831950514944e84aabafd93181e57be
+
+
+
+
+FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+
+
+
+stage('npm install') { 
+            steps {
+                sh "npm install"
+            }
+        }
+
