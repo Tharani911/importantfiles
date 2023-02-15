@@ -1,0 +1,15 @@
+date
+
+timedatectl
+
+timedatectl list-timezones
+
+sudo timedatectl set-timezone Asia/Kolkata
+
+ timedatectl
+
+date
+----------------------------------------------------------------------------------------------------
+git remote add springboot https://gitlab.com/Thaaru/springboot.git
+git push springboot
+

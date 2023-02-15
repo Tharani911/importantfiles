@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: start service
+      systemd:
+        name: license.service
+        state: started
+------------------------------------------------------------------------------------------------------------------
+
+cd /etc/systemd/system/license.service
+
+
+[Unit]
+Description=License
+
+[Service]
+ExecStart=/usr/bin/java -jar /etc/ansible/spring-mongodb-0.0.1-SNAPSHOT.jar
+User=ansadmin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
+

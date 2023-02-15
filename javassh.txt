@@ -1,0 +1,14 @@
+update_centos:
+  image: mullnerz/ansible-playbook
+  stage: update_cento
+  variables:
+    ANSIBLE_HOST_KEY_CHECKING: "False"
+    ANSIBLE_SSH_PRIVATE_KEY_FILE: "${SSHKEY}"
+  script:
+    - chmod 600 ${SSHKEY}
+    - scp -T -o StrictHostKeyChecking=no -i ${SSHKEY} ./smartfluence-dependencies/target/smartfluence-dependencies-0.0.1-SNAPSHOT.jar "${USERS}@${PUB_IP}":/etc/ansible
+    - ssh -T -o StrictHostKeyChecking=no -i ${SSHKEY} "${USERS}@${PUB_IP}"
+      ansible-playbook -i /etc/ansible/hosts /etc/ansible/playbook.yml --tag upgrade -u "${USERS}" --private-key="${SSHKEY}" --check
+
+  only:
+    - master

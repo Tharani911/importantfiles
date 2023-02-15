@@ -1,0 +1,34 @@
+https://tecadmin.net/install-java-on-amazon-linux/    ---java ...linux machine instalation
+
+https://thecodecloud.in/ansible-installation-configuration-amazon-linux-ec2-instance-aws/  ----ansible master client installation
+
+https://www.digitalocean.com/community/tutorial_series/how-to-write-ansible-playbooks  ---sample playbook
+
+
+https://www.fosstechnix.com/gitlab-ci-deploy-to-ec2-using-ssh/ --------connecting ssh key
+
+
+https://youtu.be/9mp9vYLxdKk -----sonar with gitlab ci
+
+script:
+
+-mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.password=$SONAR_PASSWORD
+
+CREATE USER jayadeep IDENTIFIED BY 'Jayadeep@01';
+GRANT ALL PRIVILEGES ON *.* TO jayadeep WITH GRANT OPTION;
+
+cqlsh -e "DESCRIBE SCHEMA" > cassandra_dump.cql
+
+sudo update-alternatives --config java  ----ubuntu
+
+-------------------------------------------------------------------------
+cassandra config file 
+
+
+rpc_address 0.0.0.0
+broadcast_rpc_address 1.2.3.4
+
+--------------------------------------------------------------------------
+mysql 
+ 
+bind_address 0.0.0.0

@@ -1,0 +1,23 @@
+docker commands................
+
+1.docker images
+2.docker search --filter is-official=true alipne(imagename)
+3.docker image ls
+4.docker history [imagename]
+5.docker image inspect [imagename]
+6.docker image rm [imagename]
+7.docker image prune -a    ----prune :unused images
+8.dokcer container run -it --name [containeraname] [imagename] 
+9.docker conainer stop [containerid]
+10.docker run -p 27017:27017 -d -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb
+11.docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag 
+12.docker container create --name nginx -p 6060:80
+13.docker start containerid
+14.dokcer stop containerid
+15.docker rm containerid
+16.docker container prune
+17.docker logs containerid
+18.docker build -f Dockerfile -t ansible .
+
+
+

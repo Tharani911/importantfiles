@@ -1,0 +1,6 @@
+1.yum install docker -y
+2.sudo service docker status
+2.sudo service docker start
+4.DOCKER_COMPOSE_VERSION="1.23.2"
+5.sudo curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+6.sudo chmod +x /usr/local/bin/docker-compose

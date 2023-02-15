@@ -1,0 +1,150 @@
+------------mysql--------------------------------------------------------------
+
+docker pull mysql
+
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+
+
+
+ mysqldump -u root -p --routines smartfluence > backup_$(date "+%b-%d-%Y-%H-%M-%S").sql
+
+smartfluence@001
+
+smart@#fluence
+
+
+
+
+mysql -u root -p smartfluence < mysqldbdump.sql 
+password:root
+
+mysql -u root -p
+root
+
+scp -r  smart_user@3.129.161.150:/home/smart_user/backup_Dec-13-2022-07-20-12.sql D:\backup_Dec-13-2022-07-20-12.sql
+ 
+
+docker cp /home/ubuntu/mysqldbdump.sql e3066208e5d9:/mysqldbdump.sql
+
+docker cp  1b9107091218:/backup /home/ubuntu/backupcassandra 
+
+ALTER USER 'root'@'%' IDENTIFIED BY 'root';
+
+CREATE USER 'tharani' IDENTIFIED BY 'tharani@01';
+
+CREATE USER 'smartfluence' IDENTIFIED BY '$#smart@!migration^&';
+
+CREATE USER 'muness' IDENTIFIED BY 'muness@01';
+
+GRANT ALL PRIVILEGES ON * . * TO tharani;
+
+GRANT ALL PRIVILEGES ON smartfluence.* TO 'smartfluence';  
+
+
+compose-file:
+
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
+    driver: local
+
+
+
+----------------cassandra--------------------------------------------------------
+
+cqlsh -u cassandra -p cassandra@1936$
+keyspacename: smartfluence
+
+docker pull cassandra
+
+docker container run -d -it -p 9042:9042 --name cassandra cassandra
+
+username: cassandra 
+password:cassandra
+
+sudo apt-get install zip unzip
+
+unzip test.zip
+
+
+https://askubuntu.com/questions/720784/how-to-install-latest-node-inside-a-docker-container
+
+# update 
+apt-get update
+# install curl 
+apt-get install curl
+# get install script and pass it to execute: 
+curl -sL https://deb.nodesource.com/setup_16.x | bash
+# and install node 
+apt-get install nodejs
+# confirm that it was successful 
+node -v
+# npm installs automatically 
+npm -v
+
+sudo nodetool status
+
+----------consul-------------------------------------------
+https://www.atlantic.net/vps-hosting/how-to-install-consul-server-on-ubuntu-20-04/
+
+config.json
+
+{
+"bootstrap": true,
+"server": true,
+"log_level": "DEBUG",
+"enable_syslog": true,
+"datacenter": "server1",
+"addresses" : {
+"http": "0.0.0.0"
+},
+"bind_addr": "your-server-ip",
+"node_name": "ubuntu2004",
+"data_dir": "/var/lib/consul",
+"acl_datacenter": "server1",
+"acl_default_policy": "allow",
+"encrypt": "TJ8iw/XJ+0/BSUMGuLFWkeT23LmGnfhmF/qWgA25wZU="
+}
+
+
+sudo consul agent -ui -bind=172.31.81.149 -data-dir=/tmp/consul -config-file=/etc/consul.d/config.json
+
+sudo consul agent -ui -bind=172.31.7.132 -config-file=/etc/consul.d/config.json
+
+
+----------------jenkins-----------------------------------------
+
+docker pull jenkins
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+
+  # Retrieves the temperature
+  frontend:
+    image: brand-front-ssl
+    container_name: brand-front-ssl
+    build: .
+    
+    ports:
+      - 3030:3000
+    # restart: on-failure
+
+  # Proxies requests to internal services
+  nginx:
+    image: nginx:latest
+    container_name: reverse_proxy_demo
+   
+     
+  
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      
+      - frontend
+    ports:
+      - 80:80
+      - 443:443
+
+
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+
+
+volumes:
+      - $HOME/.m2/repository:/root/.m2/repository
+      - /data/spring-boot-app
+
+
+
+
+
+
