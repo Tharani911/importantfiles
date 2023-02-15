@@ -1,0 +1,38 @@
+ansible password-----------------ruban
+1.useradd ansadmin
+2.passwd ansadmin
+3.visudo  (ansadmin ALL ALL)
+4. sudo vi /etc/ssh/sshd_config (uncommand password authentication yes)
+5.service sshd reload
+6.ssh-keygen
+7.sudo amazon-linux-extras install ansible2 -----ansible install
+8.python --version,ansible --version
+  
+no password error
+-------------
+1.vim /etc/sudoers.d/ansadmin   ansadmin  ALL=(ALL) NOPASSWD:ALL
+
+9. docker host need to communicate with ansible
+
+10.in docker host server be as a root sudo su - -----------command
+11.in docker host server useradd ansadmin,passwd ansadmin
+12.visudo  (ansadmin ALL ALL)
+13.vi /etc/ssh/sshd_config (uncommand password authentication yes)
+14.grep Password /etc/ssh/sshd_config
+15.give docker host as a managed node in ansible switch to ansible server
+16.vi /etc/ansible/hosts
+17.delete everything add dockerhost ip address here ifconfig command in dockerhost server
+18.switch to ansadmin in ansible server
+19. ll -la
+20.cd .ssh
+21.to see the public and private key
+22.sudo su - ansadmin
+23.error sorted----vi /etc/ssh/sshd_config   ----added PermitRootLogin yes  --in dockerhost server
+24.sudo systemctl reload sshd
+25.ssh-copy-id 172.31.90.244  --dockerhost ip(command ifconfig)
+26. in ansible server ...ansible all -m ping
+27.ansible all -m command  -a uptime ------------to check no of user
+2.which ansible
+ 
+
+'ansible_become_password=ruban'

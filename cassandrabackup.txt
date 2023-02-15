@@ -1,0 +1,13 @@
+cassandra backup
+
+
+1.docker exec -it cid bash
+
+2.nodetool snapshot -t snap-12-19-1404
+
+3.cd /var/lib/cassandra/data/smartfluence
+
+4.sudo docker cp  1b9107091218:/home /home/ubuntu/backup-cassandra
+
+5.sudo zip -r cassandra19new.zip backup-cassandra
+
